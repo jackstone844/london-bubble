@@ -28,7 +28,7 @@ export class Home extends React.Component {
      * @return {Object} - Error thrown on reject
     */
     componentDidMount() {
-        this.props.onGetVenue()
+        if (!this.props.state.HomeFeed.venues) this.props.onGetVenue()
     }
 
     /**
