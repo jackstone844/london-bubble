@@ -3,7 +3,7 @@ import { getReducer } from './HomeFeedReducer.js';
 import { routerReducer } from 'react-router-redux';
 
 const rootReducer = combineReducers({
-    getData: getReducer,
+    HomeFeed: getReducer,
     routing: routerReducer
 });
 

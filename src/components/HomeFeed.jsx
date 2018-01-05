@@ -25,5 +25,3 @@ VenueFeed.propTypes = {
     state: PropTypes.object.isRequired
 };
 
-console.log(PropTypes);
-

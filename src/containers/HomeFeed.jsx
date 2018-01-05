@@ -16,8 +16,6 @@ export class Home extends React.Component {
     // props and state can be set
     constructor(props){
         super(props);
-
-        console.log(props);
     }
     
     /**
@@ -67,6 +65,7 @@ export class Home extends React.Component {
     
 
     render() {
+        console.log(this.props)
         // Define in render so as to update each time
         // the component is re-rendered function is called
         const state = this.props.state;
