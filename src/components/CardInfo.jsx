@@ -8,8 +8,12 @@ export default class Icons extends React.Component {
 
         const stateInstance = this.props.stateInstance;
 
+        let paddingStyle = {
+            paddingTop: '20px',
+        };
+
         return (
-            <div>
+            <div style={paddingStyle}>
                 <div className='col'>
                     <p><FontAwesome
                         className='icon-location-arrow icon-1x'
