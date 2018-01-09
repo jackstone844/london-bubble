@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 class Header extends React.Component {
     render() {
 
-        const state = this.props.state;
+        const stateInstance = this.props.stateInstance;
 
         return [
-            <h3 key={1}>{state.name}</h3>,
-            <p key={2}>{state.category}</p>
+            <h3 key={1}>{stateInstance.name}</h3>,
+            <p key={2}>{stateInstance.category}</p>
         ]
     }
 }
 
 Header.propTypes = {
-    state: PropTypes.object.isRequired
+    stateInstance: PropTypes.object.isRequired
 };
 
 

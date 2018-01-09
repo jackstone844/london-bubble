@@ -6,7 +6,7 @@ import { Image } from 'react-bootstrap';
 export default class Photo extends React.Component {
     render() {
 
-        const state = this.props.state;
+        const stateInstance = this.props.stateInstance;
 
         let paddingStyle = {
             paddingTop: '10px',
@@ -15,12 +15,12 @@ export default class Photo extends React.Component {
 
         return (
             <div style={paddingStyle}>
-                <Image key={2} src={state.image} responsive rounded />
+                <Image key={2} src={stateInstance.image} responsive rounded />
             </div>
         )
     }
 }
 
 Photo.propTypes = {
-    state: PropTypes.object.isRequired
+    stateInstance: PropTypes.object.isRequired
 };

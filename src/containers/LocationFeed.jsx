@@ -4,6 +4,7 @@ import { getLocations } from '../actions/LocationFeedActions.js';
 import { getVenue } from '../actions/HomeFeedActions.js';
 import Loading from '../components/Loading.jsx';
 import LocationFeed from '../components/LocationFeed.jsx';
+import PropTypes from 'prop-types';
 
 export class Locations extends React.Component {
 
@@ -11,6 +12,7 @@ export class Locations extends React.Component {
     // props and state can be set
     constructor(props){
         super(props);
+        console.log(props);
     }
 
      /**
@@ -21,7 +23,7 @@ export class Locations extends React.Component {
      * @return {Object} - Error thrown on reject
     */
     componentDidMount() {
-        if (!this.props.state.LocationFeed.location) this.props.onGetLocation()
+        if (!this.props.state.LocationFeed.locations) this.props.onGetLocation()
         if (!this.props.state.HomeFeed.venues) this.props.onGetVenue()
     }
 
@@ -34,13 +36,13 @@ export class Locations extends React.Component {
      * @callback venueInstance 
      * @returns {Object} - 'n' number of VenueFeed components
     */
-    locationArrayCreater = function(obj, callback) {
+    locationArrayCreater = function(obj, state, callback) {
         let keyValArray = Object.entries(obj);
         let LocationObjects = [];
         for (let i = 0; i < keyValArray.length; i++) {
             LocationObjects.push(keyValArray[i][1])
         }
-        return callback(LocationObjects);
+        return callback(LocationObjects, state);
     }
 
     /**
@@ -53,9 +55,9 @@ export class Locations extends React.Component {
      * @returns: 'n' number of VenueFeed components
      *
     */
-    locationInstance = function (locationArray) {
-        return locationArray.map(function(venue, index){
-            return <LocationFeed state={venue} key={index} />
+    locationInstance = function (locationArray, state) {
+        return locationArray.map(function(location, index){
+            return <LocationFeed key={index} state={state} stateInstance={location} />
         })
     }
 
@@ -73,14 +75,13 @@ export class Locations extends React.Component {
                     </div>
                 :   
                     <div>
-                        {this.locationArrayCreater(locations, this.locationInstance)}
+                        {this.locationArrayCreater(locations, state, this.locationInstance)}
                     </div>
                 }
             </div>
         );
     }
 }
-
 
 /* Bind redux to the locations container */
     

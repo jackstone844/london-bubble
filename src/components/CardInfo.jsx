@@ -6,7 +6,7 @@ const FontAwesome = require('react-fontawesome');
 export default class Icons extends React.Component {
     render() {
 
-        const state = this.props.state;
+        const stateInstance = this.props.stateInstance;
 
         return (
             <div>
@@ -16,7 +16,7 @@ export default class Icons extends React.Component {
                         name='location-icon'
                         // size='2x'
                         tag='i'
-                    /> {state.location}</p>
+                    /> {stateInstance.location}</p>
                 </div>
                 <div className='col'>
                     <p><FontAwesome
@@ -24,7 +24,7 @@ export default class Icons extends React.Component {
                         name='website-icon'
                         // size='2x'
                         tag='i'
-                    /> {state.website}</p>
+                    /> {stateInstance.website}</p>
                 </div>
                 <div className='col'>
                     <p><FontAwesome
@@ -32,7 +32,7 @@ export default class Icons extends React.Component {
                         name='instagram-icon'
                         // size='2x'
                         tag='i'
-                    /> {state.instagram} </p>
+                    /> {stateInstance.instagram} </p>
                 </div>
                 <div className='col'>
                     <span> 2017-12-12 </span>
@@ -43,5 +43,5 @@ export default class Icons extends React.Component {
 }
 
 Icons.propTypes = {
-    state: PropTypes.object.isRequired
+    stateInstance: PropTypes.object.isRequired
 };

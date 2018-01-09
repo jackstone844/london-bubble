@@ -7,14 +7,14 @@ import PropTypes from 'prop-types';
 export default class VenueFeed extends React.Component {
     render() {
 
-        const state = this.props.state;
+        const stateInstance = this.props.stateInstance;
 
         return (
             <div className="col col-md-6 col-md-offset-3 container-fluid jumbotron">
                 <div>
-                    <Header state={state} />
-                    <Photo state={state} />
-                    <Icons state={state} />
+                    <Header stateInstance={stateInstance} />
+                    <Photo stateInstance={stateInstance} />
+                    <Icons stateInstance={stateInstance} />
                 </div>
             </div>
         )
@@ -22,6 +22,6 @@ export default class VenueFeed extends React.Component {
 }
 
 VenueFeed.propTypes = {
-    state: PropTypes.object.isRequired
+    stateInstance: PropTypes.object.isRequired
 };
 

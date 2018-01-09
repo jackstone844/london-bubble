@@ -53,7 +53,7 @@ export class Home extends React.Component {
     */
     venueInstance = function (venueArray) {
         return venueArray.map(function(venue, index){
-            return <VenueFeed state={venue} key={index} />
+            return <VenueFeed key={index} stateInstance={venue} />
         })
     }
 
