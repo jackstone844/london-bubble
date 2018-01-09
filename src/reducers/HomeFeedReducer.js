@@ -45,8 +45,8 @@ export function getReducer(state = initalState, action) {
     }
 }
 
-const rootReducer = combineReducers({
+/*const rootReducer = combineReducers({
     HomeFeed: getReducer
-});
+});*/
 
-export default rootReducer;
+//export default getReducer; 

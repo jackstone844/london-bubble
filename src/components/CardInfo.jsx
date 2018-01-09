@@ -1,7 +1,4 @@
 import React from 'react';
-import { 
-    Image
-} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 const FontAwesome = require('react-fontawesome');
 

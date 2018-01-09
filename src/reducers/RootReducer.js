@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { getReducer } from './HomeFeedReducer.js';
-import { routerReducer } from 'react-router-redux';
+import { getLocationsReducer } from './LocationFeedReducer.js';
 
 const rootReducer = combineReducers({
-    getData: getReducer,
-    routing: routerReducer
+    HomeFeed: getReducer,
+    LocationFeed: getLocationsReducer
 });
 
-export default rootReducer; 
+export default rootReducer;

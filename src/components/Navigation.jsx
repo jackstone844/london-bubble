@@ -16,7 +16,7 @@ import {
 import img from '../../public/images/logo-new.png';
 
 import Home from '../containers/HomeFeed.jsx';
-import About from '../containers/AboutUs.jsx';
+import Locations from '../containers/LocationFeed.jsx';
 
 export default class Navigation extends React.Component {
     render() {
@@ -35,8 +35,8 @@ export default class Navigation extends React.Component {
                         <NavItem href="/">
                             <NavLink exact activeClassName='active' to='/'>Home</NavLink>
                         </NavItem>
-                        <NavItem href="/About">
-                            <NavLink activeClassName='active' to='/About'>About</NavLink>
+                        <NavItem href="/locations">
+                            <NavLink activeClassName='active' to='/locations'>Locations</NavLink>
                         </NavItem>
                     </Nav>
                     <Navbar.Form pullRight>
@@ -48,7 +48,7 @@ export default class Navigation extends React.Component {
             </Navbar>,
 
             <Route key={2} exact path="/" component={Home} store />,
-            <Route key={3} path="/About" component={About} />
+            <Route key={3} path="/locations" component={Locations} store />
             
         ];
     }

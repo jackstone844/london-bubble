@@ -1,7 +1,4 @@
 import React from 'react';
-import { 
-    Image
-} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 class Header extends React.Component {
@@ -11,7 +8,7 @@ class Header extends React.Component {
 
         return [
             <h3 key={1}>{state.name}</h3>,
-            <p key={2}>{state.category}</p> 
+            <p key={2}>{state.category}</p>
         ]
     }
 }

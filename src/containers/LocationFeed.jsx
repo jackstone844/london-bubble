@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getLocations } from '../actions/LocationFeedActions.js';
 import { getVenue } from '../actions/HomeFeedActions.js';
 import Loading from '../components/Loading.jsx';
-import VenueFeed from '../components/HomeFeed.jsx';
+import LocationFeed from '../components/LocationFeed.jsx';
 
-export class Home extends React.Component {
-    
+export class Locations extends React.Component {
+
     // Construct the component
     // props and state can be set
     constructor(props){
         super(props);
     }
-    
-    /**
+
+     /**
      * Async call to FireBase once the Home
      * container has mounted
      * 
@@ -20,6 +21,7 @@ export class Home extends React.Component {
      * @return {Object} - Error thrown on reject
     */
     componentDidMount() {
+        if (!this.props.state.LocationFeed.location) this.props.onGetLocation()
         if (!this.props.state.HomeFeed.venues) this.props.onGetVenue()
     }
 
@@ -32,13 +34,13 @@ export class Home extends React.Component {
      * @callback venueInstance 
      * @returns {Object} - 'n' number of VenueFeed components
     */
-    venueArrayCreater = function(obj, callback) {
+    locationArrayCreater = function(obj, callback) {
         let keyValArray = Object.entries(obj);
-        let VenueObjects = [];
+        let LocationObjects = [];
         for (let i = 0; i < keyValArray.length; i++) {
-            VenueObjects.push(keyValArray[i][1])
+            LocationObjects.push(keyValArray[i][1])
         }
-        return callback(VenueObjects);
+        return callback(LocationObjects);
     }
 
     /**
@@ -51,53 +53,44 @@ export class Home extends React.Component {
      * @returns: 'n' number of VenueFeed components
      *
     */
-    venueInstance = function (venueArray) {
-        return venueArray.map(function(venue, index){
-            return <VenueFeed state={venue} key={index} />
+    locationInstance = function (locationArray) {
+        return locationArray.map(function(venue, index){
+            return <LocationFeed state={venue} key={index} />
         })
     }
 
-    /* This Works to filter category on locaiton 
-    venueInstance = function (venueArray) {
-        return venueArray.map(function(venue, index){
-            if (venue.category == 'Clapham South') {
-            return <VenueFeed state={ venue} key={index} />
-            }
-        })
-    }
-    */
-    
-
-    render() { 
+    render() {
         // Define in render so as to update each time
         // the component is re-rendered function is called
-        const state = this.props.state;
-        const venues = this.props.state.HomeFeed.venues;
+        const state = this.props.state
+        const locations = this.props.state.LocationFeed.locations
+
         return (
-                <div className="row">
-                    { state.HomeFeed.isFetching === true ?
-                        <div className="loading-container">    
-                            <Loading />
-                        </div>
-                    :   
-                        <div>
-                            {this.venueArrayCreater(venues, this.venueInstance)}
-                        </div>
-                    }
-                </div>
+            <div className="row">
+                { state.LocationFeed.isFetching === true || state.HomeFeed.isFetching === true ?
+                    <div className="loading-container">
+                        <Loading /> 
+                    </div>
+                :   
+                    <div>
+                        {this.locationArrayCreater(locations, this.locationInstance)}
+                    </div>
+                }
+            </div>
         );
     }
 }
 
-/* Bind redux to the home container */
+
+/* Bind redux to the locations container */
     
 /* Two functions that map dispatch 
-and state into the Home components
+and state into the location components
 props */
 
 
 /**
- * Injects the state into Home component props
+ * Injects the state into locations component props
  * (react-redux bindings)
  * 
  * @param {Object} state - Redux state
@@ -105,22 +98,23 @@ props */
 */
 const mapStateToProps = (state) => {
     return {
-        state
+        state 
     };
 };
 
 /**
- * Injects the dispatch object & onGetVenue
- * function into Home component
+ * Injects the dispatch object & onGetLocation
+ * function into location component
  * (react-redux bindings)
  * 
  * @param {Object} dispatch - Redux dispatch object
  * @return {Object} - Redux dispatch object
- * @return {Object} - onGetVenue function
+ * @return {Object} - onGetLocation function
 */
 function mapDispatchToProps(dispatch) {
     return{
         dispatch,
+        onGetLocation: () => dispatch(getLocations()),
         onGetVenue: () => dispatch(getVenue())
     };
 }
@@ -128,14 +122,14 @@ function mapDispatchToProps(dispatch) {
 /**
  * Takes mapDispatchToProps & mapStateToProps
  * functions and maps their return values 
- * into Home component
+ * into location component
  * (react-redux bindings)
  * 
  * @param {Object} mapStateToProps
  * @param {Object} mapDispatchToProps
- * @param {Object} Home - Home Component
+ * @param {Object} Home - location Component
 */
-const homeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);
+const locationsContainer = connect(mapStateToProps, mapDispatchToProps)(Locations);
 
-export default homeContainer; 
 
+export default locationsContainer;

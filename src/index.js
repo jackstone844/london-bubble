@@ -13,7 +13,7 @@ import {
 } from "react-router-dom";
 
 import Home from './containers/HomeFeed.jsx';
-import About from './containers/AboutUs.jsx';
+import Locations from './containers/LocationFeed.jsx';
 import Navigation from './components/Navigation.jsx';
 
 import configureStore from './store/configureStore';
