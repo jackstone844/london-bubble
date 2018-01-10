@@ -10,6 +10,7 @@ export class Home extends React.Component {
     // props and state can be set
     constructor(props){
         super(props);
+        
     }
     
     /**

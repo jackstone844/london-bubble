@@ -12,7 +12,7 @@ export class Locations extends React.Component {
     // props and state can be set
     constructor(props){
         super(props);
-        console.log(props);
+
     }
 
      /**
