@@ -17,6 +17,7 @@ import img from '../../public/images/logo-new.png';
 
 import Home from '../containers/HomeFeed.jsx';
 import Locations from '../containers/LocationFeed.jsx';
+import LocationFeedVenues from '../components/LocationFeedVenues.jsx';
 
 export default class Navigation extends React.Component {
     render() {
@@ -48,7 +49,8 @@ export default class Navigation extends React.Component {
             </Navbar>,
 
             <Route key={2} exact path="/" component={Home} store />,
-            <Route key={3} path="/locations" component={Locations} store />
+            <Route key={3} exact path="/locations" component={Locations} store />,
+            <Route key={4} exact path="/locations/venues" component={LocationFeedVenues} />
             
         ];
     }

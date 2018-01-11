@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export default class VenueFeed extends React.Component {
     render() {
-
+ 
         const stateInstance = this.props.stateInstance;
 
         return (

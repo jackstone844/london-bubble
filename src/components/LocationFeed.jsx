@@ -1,5 +1,5 @@
 import React from 'react';
-import Photo from './CardImage.jsx';
+import LocationPhoto from './LocationFeedImage.jsx';
 import PropTypes from 'prop-types';
 
 export default class LocationFeed extends React.Component {
@@ -7,16 +7,17 @@ export default class LocationFeed extends React.Component {
         super(props);
 
     }
-
     render() {
-
+        
         const state = this.props.state;
         const stateInstance = this.props.stateInstance;
 
         return (
             <div className="col col-md-6 col-md-offset-3 container-fluid jumbotron">
                 <div>
-                    <Photo state={state} stateInstance={stateInstance} />
+                    <a>
+                        <LocationPhoto state={state} stateInstance={stateInstance} />
+                    </a>
                 </div>
             </div>
         )

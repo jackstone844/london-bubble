@@ -4,6 +4,10 @@ import { Image } from 'react-bootstrap';
 
 
 export default class Photo extends React.Component {
+    constructor(props){
+        super(props);
+    }
+
     render() {
 
         const stateInstance = this.props.stateInstance;

@@ -10,7 +10,10 @@ import {
     Route,
     NavLink,
     HashRouter,
+    Router
 } from "react-router-dom";
+import { browserHistory } from 'react-router';
+import createBrowserHistory from 'history/createBrowserHistory'
 
 import Home from './containers/HomeFeed.jsx';
 import Locations from './containers/LocationFeed.jsx';
@@ -26,11 +29,14 @@ import './libs/font-awesome/css/font-awesome.min.css';
 // Configure React store 
 const store = configureStore();
 
+// Create a new instance of browserHistory
+const newHistory = createBrowserHistory();
+
 const main = (
     <Provider store={store}>
-        <HashRouter>
+        <Router history={newHistory}>
                 <Navigation/>
-        </ HashRouter>
+        </ Router>
     </Provider>
 );
 

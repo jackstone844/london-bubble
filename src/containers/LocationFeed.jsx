@@ -12,7 +12,6 @@ export class Locations extends React.Component {
     // props and state can be set
     constructor(props){
         super(props);
-
     }
 
      /**
@@ -64,6 +63,7 @@ export class Locations extends React.Component {
     render() {
         // Define in render so as to update each time
         // the component is re-rendered function is called
+
         const state = this.props.state
         const locations = this.props.state.LocationFeed.locations
 
@@ -75,7 +75,7 @@ export class Locations extends React.Component {
                     </div>
                 :   
                     <div>
-                        {this.locationArrayCreater(locations, state, this.locationInstance)}
+                        {this.locationArrayCreater(locations, this.props, this.locationInstance)}
                     </div>
                 }
             </div>
