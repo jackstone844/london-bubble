@@ -17,5 +17,4 @@ Header.propTypes = {
     stateInstance: PropTypes.object.isRequired
 };
 
-
 export default Header;

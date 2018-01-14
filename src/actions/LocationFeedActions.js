@@ -10,8 +10,8 @@ Locations Action Creators
 */
 
 /**
- * Action dispatched when requesting locations
- * from FireBase
+ * Action to be dispatched when requesting 
+ * locations from FireBase
  * 
  * @return {Object}
  */
@@ -24,8 +24,8 @@ Locations Action Creators
  }
 
 /**
- * Action dispatched if request for locations
- * is rejected 
+ * Action to be dispatched when requesting 
+ * locations from FireBase is rejected
  *
  * @return {Object}
  */
@@ -38,8 +38,8 @@ Locations Action Creators
  }
 
 /**
- * Action dispatched if request for locations
- * is fulfilled 
+ * Action to be dispatched when requesting 
+ * locations from FireBase is fulfilled
  * 
  * @return {Object}
  */
@@ -53,7 +53,7 @@ Locations Action Creators
  }
 
  /**
- * Thunk function to dispatch the Action Creators
+ * Function to dispatch action creators 
  * 
  * @return {Object}
  */

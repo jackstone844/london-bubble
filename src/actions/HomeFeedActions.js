@@ -55,28 +55,33 @@ function getVenueFulfilledAction(venue) {
 
  /* 
  By calling dispatch(action), the redux store will pass 
- the current state tree and the action object that was
- dispatched to the root reducer, in this case, the root 
- reducer only has the getReducer function
+ the current state tree & the action object that was
+ dispatched to the root reducer.
+ 
+ The root reducer will update the state based 
+ on the action that is dispatched and return the 
+ updated state back to the store. 
+ 
+ This will call render() and update props if 
+ react-redux bindings have been used (mapStateToProps)
  */
-
 
 export function getVenue() {
     // Thunk middleware knows how to handle functions.
     // It passes the dispatch method as an argument to the function,
     // thus making it able to dispatch actions itself.
-    return dispatch => {
-        // First dispatch: the app state is updated to inform
+    return (dispatch) => {
+        // First dispatch: the state is updated to inform
         // that the API call is starting.
         dispatch(getVenueRequestAction());
-        // The function called by the thunk middleware can return a value,
-        // that is passed on as the return value of the dispatch method.
 
-        // In this case, we return a promise to wait for.
-        // This is not required by thunk middleware, but it is convenient for us.
+        // Next return the /items data from FireBase. 
+        // when the data is returned, assigned it to venue
+        // and dispatch the next action, passing the venue var 
+        // as an arg. This will update th app state 
         return database.ref('/item').once('value', snap => {
             const venue = snap.val();
-            // We can dispatch many times!
+
             // Here, we update the app state with the results of the API call.
             dispatch(getVenueFulfilledAction(venue));
         })

@@ -15,7 +15,7 @@ export default class LocationPhoto extends React.Component {
 
         let routeToVenues = function() {
             return state.history.push({
-                pathname: 'locations/venues', 
+                pathname: 'locations/venues',
                 state : {
                     state: state.state,
                     stateInstance : stateInstance

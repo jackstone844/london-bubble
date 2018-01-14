@@ -6,11 +6,9 @@ import VenueFeed from '../components/HomeFeed.jsx';
 
 export default class LocationFeedVenues extends React.Component {
     
-    // Construct the component
-    // props and state can be set
     constructor(props){
         super(props);
-        
+
     }
 
     /**
@@ -22,64 +20,53 @@ export default class LocationFeedVenues extends React.Component {
      * @callback venueInstance 
      * @returns {Object} - 'n' number of VenueFeed components
     */
-    venueArrayCreater = function(obj, callback) {
+    venueArrayCreater = function(obj, filterObj, callback) {
         let keyValArray = Object.entries(obj);
         let VenueObjects = [];
         for (let i = 0; i < keyValArray.length; i++) {
             VenueObjects.push(keyValArray[i][1])
         }
-        return callback(VenueObjects);
+        return callback(VenueObjects, filterObj);
     }
 
     /**
      * Return 'n' number of VenueFeed components
-     * to calling function. Passes each venue 
-     * object as the components state prop and an
-     * index as the components key prop
+     * to calling function. 
+     * Filters by location passed as stateInstance
+     * Passes each venue object as the components
+     * state prop and an index as the components key prop
      *
      * @param {Object[]} - Array of venue objected
      * @returns: 'n' number of VenueFeed components
      *
     */
-    venueInstance = function (venueArray) {
+    venueInstance = function (venueArray, filterObj) {
         return venueArray.map(function(venue, index){
+            if (venue.category == filterObj.category) {
             return <VenueFeed key={index} stateInstance={venue} />
-        })
-    }
-
-    /* This Works to filter category on locaiton 
-    venueInstance = function (venueArray) {
-        return venueArray.map(function(venue, index){
-            if (venue.category == 'Clapham South') {
-            return <VenueFeed key={index} state={venue} />
             }
         })
-    }
-    */
-    
+    }  
 
     render() { 
         // Define in render so as to update each time
         // the component is re-rendered function is called
-        //const state = this.props.state;
-        //const venues = this.props.state.HomeFeed.venues;
-        console.log(this.props)
-        /*return (
-                <div className="row">
-                    { state.HomeFeed.isFetching === true ?
-                        <div className="loading-container">    
-                            <Loading />
-                        </div>
-                    :   
-                        <div>
-                            {this.venueArrayCreater(venues, this.venueInstance)}
-                        </div>
-                    }
-                </div>
-        );*/
+        const state = this.props.location.state;
+        const venues = this.props.location.state.state.HomeFeed.venues;
+        const venuesInstance = this.props.location.state.stateInstance;
         return (
-            <p> hi </p>
-        )
+                <div className="row">
+                        
+                        {
+                            console.log(venuesInstance)
+                        }
+
+                        <div>
+                            {this.venueArrayCreater(venues, venuesInstance, this.venueInstance)}
+                        </div>
+                    
+                </div>
+        );
     }
 }
 

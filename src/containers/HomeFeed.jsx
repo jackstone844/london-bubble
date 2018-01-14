@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { getVenue } from '../actions/HomeFeedActions.js';
 import Loading from '../components/Loading.jsx';
 import VenueFeed from '../components/HomeFeed.jsx';
+import SearchBar from '../components/SearchBar.jsx';
+import { 
+    FormGroup,
+    FormControl,
+} from 'react-bootstrap';
 
 export class Home extends React.Component {
     
@@ -10,7 +15,11 @@ export class Home extends React.Component {
     // props and state can be set
     constructor(props){
         super(props);
-        
+        this.state = {
+            HomeFeed: {
+                HomeFeedStatus: props.state.HomeFeed.status,
+            }
+        }
     }
     
     /**
@@ -58,16 +67,9 @@ export class Home extends React.Component {
         })
     }
 
-    /* This Works to filter category on locaiton 
-    venueInstance = function (venueArray) {
-        return venueArray.map(function(venue, index){
-            if (venue.category == 'Clapham South') {
-            return <VenueFeed state={ venue} key={index} />
-            }
-        })
-    }
-    */
-    
+    consol = function () {
+        console.log('hi');
+    };
 
     render() { 
         // Define in render so as to update each time
@@ -82,7 +84,15 @@ export class Home extends React.Component {
                         </div>
                     :   
                         <div>
-                            {this.venueArrayCreater(venues, this.venueInstance)}
+                            <div className="col col-md-6 col-md-offset-3 container-fluid col-search">  
+                                <h2> Search our collection </h2>
+                                <FormGroup>
+                                    <FormControl type="text" placeholder="Search" id="navBarSearchForm" onChange={this.consol}/>
+                                </FormGroup>
+                            </div>
+                            <div>
+                                {this.venueArrayCreater(venues, this.venueInstance)}
+                            </div>
                         </div>
                     }
                 </div>
