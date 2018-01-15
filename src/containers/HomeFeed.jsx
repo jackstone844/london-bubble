@@ -10,16 +10,20 @@ import {
 } from 'react-bootstrap';
 
 export class Home extends React.Component {
-    
     // Construct the component
     // props and state can be set
     constructor(props){
         super(props);
+
         this.state = {
-            HomeFeed: {
-                HomeFeedStatus: props.state.HomeFeed.status,
-            }
+            HomeFeedStatus: 'initial',
         }
+
+        this.searchHandler = this.searchHandler.bind(this)
+
+        this.venueInstance = this.venueInstance.bind(this)
+
+        this.updateState = this.updateState.bind(this)
     }
     
     /**
@@ -30,7 +34,18 @@ export class Home extends React.Component {
      * @return {Object} - Error thrown on reject
     */
     componentDidMount() {
-        if (!this.props.state.HomeFeed.venues) this.props.onGetVenue()
+        if (!this.props.state.HomeFeed.venues) this.props.onGetVenue();
+        if (this.props.state.HomeFeed.venues) this.setState({
+            HomeFeedStatus: 'updated',
+            HomeFeedVenues: this.props.state.HomeFeed.venues
+        });
+    }
+
+    componentDidUpdate() {
+        if (this.props.state.HomeFeed.venues && this.state.HomeFeedStatus === 'initial') this.setState({
+            HomeFeedStatus: 'updated',
+            HomeFeedVenues: this.props.state.HomeFeed.venues
+        })
     }
 
     /**
@@ -63,35 +78,59 @@ export class Home extends React.Component {
     */
     venueInstance = function (venueArray) {
         return venueArray.map(function(venue, index){
-            return <VenueFeed key={index} stateInstance={venue} />
+                return <VenueFeed key={index} stateInstance={venue} />
         })
     }
 
-    consol = function () {
-        console.log('hi');
+    searchHandler = function (event) {
+        let searchTerm = event.target.value.toLowerCase();
+        this.venueArraySearchReducer(this.props.state.HomeFeed.venues, this.updateState, searchTerm)
     };
+
+    venueArraySearchReducer = function(obj, callback, searchTerm) {
+        let keyValArray = Object.entries(obj);
+        let VenueObjects = [];
+        let MatchingSearches = []
+        for (let i = 0; i < keyValArray.length; i++) {
+            VenueObjects.push(keyValArray[i][1])
+        }
+        for (let t = 0; t < VenueObjects.length; t++) {
+            if (VenueObjects[t].name.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
+                MatchingSearches.push(VenueObjects[t])
+            }
+        }
+        return callback(MatchingSearches);
+    }
+
+    updateState (MatchingSearches) {
+        this.setState({
+            HomeFeedVenues: MatchingSearches
+        }, function(){
+            console.log(this.state)
+        })
+    }
 
     render() { 
         // Define in render so as to update each time
         // the component is re-rendered function is called
-        const state = this.props.state;
-        const venues = this.props.state.HomeFeed.venues;
+        //const state = this.props.state;
+        //const venues = this.props.state.HomeFeed.venues;
         return (
                 <div className="row">
-                    { state.HomeFeed.isFetching === true ?
+                    { this.state.HomeFeedStatus === 'initial' ?
                         <div className="loading-container">    
                             <Loading />
                         </div>
-                    :   
+                    :
                         <div>
                             <div className="col col-md-6 col-md-offset-3 container-fluid col-search">  
                                 <h2> Search our collection </h2>
                                 <FormGroup>
-                                    <FormControl type="text" placeholder="Search" id="navBarSearchForm" onChange={this.consol}/>
+                                    <FormControl type="text" placeholder="Search" id="navBarSearchForm" onChange={this.searchHandler}/>
                                 </FormGroup>
                             </div>
                             <div>
-                                {this.venueArrayCreater(venues, this.venueInstance)}
+                                {this.venueArrayCreater(this.state.HomeFeedVenues, this.venueInstance)}
                             </div>
                         </div>
                     }

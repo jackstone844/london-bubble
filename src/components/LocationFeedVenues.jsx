@@ -43,7 +43,7 @@ export default class LocationFeedVenues extends React.Component {
     venueInstance = function (venueArray, filterObj) {
         return venueArray.map(function(venue, index){
             if (venue.category == filterObj.category) {
-            return <VenueFeed key={index} stateInstance={venue} />
+                return <VenueFeed key={index} stateInstance={venue} />
             }
         })
     }  
