@@ -36,7 +36,7 @@ export default class Navigation extends React.Component {
                     <Navbar.Toggle />
                 </Navbar.Header>
                 <Navbar.Collapse>
-                    <Nav>
+                    <Nav pullRight>
                         <NavItem href="/">
                             <NavLink exact activeClassName='active' to='/'>Home</NavLink>
                         </NavItem>
@@ -44,11 +44,6 @@ export default class Navigation extends React.Component {
                             <NavLink activeClassName='active' to='/locations'>Locations</NavLink>
                         </NavItem>
                     </Nav>
-                    <Navbar.Form pullRight>
-                        <FormGroup>
-                            <FormControl type="text" placeholder="Search" id="navBarSearchForm"/>
-                        </FormGroup>
-                    </ Navbar.Form>
                 </Navbar.Collapse>
             </Navbar>,
 

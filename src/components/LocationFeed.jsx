@@ -12,14 +12,22 @@ export default class LocationFeed extends React.Component {
         const state = this.props.state;
         const stateInstance = this.props.stateInstance;
 
+        let paddingStyle = {
+            paddingLeft: '0px',
+            paddingRight: '0px',
+            paddingTop: '0px',
+            paddingBottom: '0px',
+            borderStyle: 'none'
+        };
+
         return (
-            <div className="col col-md-6 col-md-offset-3 container-fluid jumbotron">
+            <div style={paddingStyle} className="col col-md-6 col-md-offset-3 container-fluid jumbotron">
                 <div>
                     <a>
                         <LocationPhoto state={state} stateInstance={stateInstance} />
                     </a>
                 </div>
-            </div>
+            </div> 
         )
     }
 }

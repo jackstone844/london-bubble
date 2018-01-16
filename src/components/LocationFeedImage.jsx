@@ -24,8 +24,8 @@ export default class LocationPhoto extends React.Component {
         };
 
         let paddingStyle = {
-            paddingTop: '10px',
-            paddingBottom: '10px'
+            paddingTop: '0px',
+            paddingBottom: '0px',
         };
 
         return (

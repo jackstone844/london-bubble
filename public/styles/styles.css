@@ -69,3 +69,15 @@ body {
   .col-search {
     background-color: #fafafa !important;
   }
+
+  .form-group {
+    margin-bottom: 50px !important;
+  }
+
+  .center-heading h2{
+    text-align: center !important;
+  }
+
+  #navBarSearchForm {
+    width: 80% !important;
+  }

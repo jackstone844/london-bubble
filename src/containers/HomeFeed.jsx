@@ -11,7 +11,10 @@ import {
 
 export class Home extends React.Component {
     /**
-     * React automatically sets this.props and 
+     * Initialise state & bind functions in the 
+     * constructor.
+     * 
+     * React automatically sets this.props 
      * so it can be access anywhere in the component
      * except in the constructor. 
      * 
@@ -20,9 +23,8 @@ export class Home extends React.Component {
      * and call super to give us access to the parent 
      * constructor. 
      * 
-     * However, I call the constructor and super 
-     * with props anyway inline with the react docs
-     * recommendation.
+     * If I want to use 'this' in the constrcutor, then
+     * I must call super().
      * 
      * @param {Object} props 
      */
@@ -212,10 +214,10 @@ export class Home extends React.Component {
                         </div>
                     :
                         <div>
-                            <div className="col col-md-6 col-md-offset-3 container-fluid col-search">  
-                                <h2> Search our venues </h2>
-                                <FormGroup>
-                                    <FormControl type="text" placeholder="Search" id="navBarSearchForm" onChange={this.searchHandler}/>
+                            <div className="col col-md-6 col-md-offset-3 container-fluid col-search center-heading">  
+                                <h2> Search for venues </h2>
+                                <FormGroup className="col-md-offset-2">
+                                    <FormControl type="text" placeholder="..." id="navBarSearchForm" onChange={this.searchHandler}/>
                                 </FormGroup>
                             </div>
                             <div>
