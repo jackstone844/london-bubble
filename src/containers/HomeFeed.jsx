@@ -96,12 +96,11 @@ export class Home extends React.Component {
      * @param {Object} obj - The object of venues returned from FireBase
      * @callback venueInstance 
      * @returns {Object} - venueInstance callback
-    */
+    */ 
     venueArrayCreater = function(obj, callback) {
-        let keyValArray = Object.entries(obj);
         let VenueObjects = [];
-        for (let i = 0; i < keyValArray.length; i++) {
-            VenueObjects.push(keyValArray[i][1])
+        for (var n in obj) {
+            VenueObjects.push(obj[n])
         }
         return callback(VenueObjects);
     }

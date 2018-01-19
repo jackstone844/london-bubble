@@ -36,10 +36,9 @@ export class Locations extends React.Component {
      * @returns {Object} - 'n' number of VenueFeed components
     */
     locationArrayCreater = function(obj, state, callback) {
-        let keyValArray = Object.entries(obj);
         let LocationObjects = [];
-        for (let i = 0; i < keyValArray.length; i++) {
-            LocationObjects.push(keyValArray[i][1])
+        for (var n in obj) {
+            LocationObjects.push(obj[n])
         }
         return callback(LocationObjects, state);
     }

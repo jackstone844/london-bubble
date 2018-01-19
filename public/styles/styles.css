@@ -81,3 +81,8 @@ body {
   #navBarSearchForm {
     width: 80% !important;
   }
+
+  .social-icons-container {
+    margin: 7px !important;
+    text-align: center !important;
+  }

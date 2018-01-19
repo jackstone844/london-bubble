@@ -1,8 +1,9 @@
 import React from 'react';
-import {
-  NavLink,
-  Route
-} from "react-router-dom";
+import { NavLink, Route } from "react-router-dom";
+import img from '../../public/images/logo-new.png';
+import Home from '../containers/HomeFeed.jsx';
+import Locations from '../containers/LocationFeed.jsx';
+import LocationFeedVenues from '../components/LocationFeedVenues.jsx';
 import { 
     Navbar, 
     Nav, 
@@ -13,16 +14,10 @@ import {
     Button,
     Form
 } from 'react-bootstrap';
-import img from '../../public/images/logo-new.png';
-
-import Home from '../containers/HomeFeed.jsx';
-import Locations from '../containers/LocationFeed.jsx';
-import LocationFeedVenues from '../components/LocationFeedVenues.jsx';
 
 export default class Navigation extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
     }
     render() {
         

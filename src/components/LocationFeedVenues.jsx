@@ -5,7 +5,6 @@ import Loading from '../components/Loading.jsx';
 import VenueFeed from '../components/HomeFeed.jsx';
 
 export default class LocationFeedVenues extends React.Component {
-    
     constructor(props){
         super(props);
 
@@ -21,10 +20,9 @@ export default class LocationFeedVenues extends React.Component {
      * @returns {Object} - 'n' number of VenueFeed components
     */
     venueArrayCreater = function(obj, filterObj, callback) {
-        let keyValArray = Object.entries(obj);
         let VenueObjects = [];
-        for (let i = 0; i < keyValArray.length; i++) {
-            VenueObjects.push(keyValArray[i][1])
+        for (var n in obj) {
+            VenueObjects.push(obj[n])
         }
         return callback(VenueObjects, filterObj);
     }
@@ -56,15 +54,9 @@ export default class LocationFeedVenues extends React.Component {
         const venuesInstance = this.props.location.state.stateInstance;
         return (
                 <div className="row">
-                        
-                        {
-                            console.log(venuesInstance)
-                        }
-
                         <div>
                             {this.venueArrayCreater(venues, venuesInstance, this.venueInstance)}
                         </div>
-                    
                 </div>
         );
     }
