@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-bootstrap';
+import LoadingImage from './LoadingImage';
+import Img from 'react-image';
 
 
 export default class Photo extends React.Component {
@@ -17,9 +19,19 @@ export default class Photo extends React.Component {
             paddingBottom: '10px'
         };
 
-        return (
+        return ( 
             <div style={paddingStyle}>
-                <Image key={2} src={stateInstance.image} responsive rounded />
+
+                <Img
+                    src={[
+                        stateInstance.image,
+                    ]}
+                    loader={<LoadingImage />}
+                    className='img-responsive img-rounded'
+                />
+  
+                {/*<Image key={2} src={stateInstance.image} onLoad={this.imageLoader} responsive rounded />*/}
+
             </div>
         )
     }

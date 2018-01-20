@@ -11,6 +11,7 @@ const { SocialIcon, SocialIcons } = require('react-social-icons');
  */
 
 export default class Icons extends React.Component {
+
     render() {
         /** 
          * A reference to a single venue using this component
@@ -32,8 +33,9 @@ export default class Icons extends React.Component {
             margin: '10px'
         }
 
-        let centerAlign = {
-            textAlign: 'center'
+        let categoryList = {
+            textAlign: 'center',
+            marginBottom: '50px'
         }
 
         /**
@@ -55,7 +57,7 @@ export default class Icons extends React.Component {
                 <div className="social-icons-container">
                     <SocialIcons className="social-icons-container" urls={iconArray} color='black' style={iconStyle}/>
                 </div>
-                <div className='col' style={centerAlign}>
+                <div className='col' style={categoryList}>
                     <p> Brewery | Canal | Pizza | Outdoor Seating </p>
                 </div>
                 <div className='col'>

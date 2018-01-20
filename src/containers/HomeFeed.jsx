@@ -157,17 +157,10 @@ export class Home extends React.Component {
      * 
      * @returns - updateState callback
      */
-    venueArraySearchReducer = function(obj, callback, searchTerm) {
-        let keyValArray = Object.entries(obj);
-        let VenueObjects = [];
-        let MatchingSearches = []
-        for (let i = 0; i < keyValArray.length; i++) {
-            VenueObjects.push(keyValArray[i][1])
-        }
-        for (let t = 0; t < VenueObjects.length; t++) {
-            if (VenueObjects[t].name.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
-                MatchingSearches.push(VenueObjects[t])
-            }
+    venueArraySearchReducer  = function(obj, callback, searchTerm) {
+        let MatchingSearches = [];
+        for (var n in obj) {
+            if (obj[n].name.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) MatchingSearches.push(obj[n])
         }
         return callback(MatchingSearches);
     }
@@ -216,7 +209,7 @@ export class Home extends React.Component {
                             <div className="col col-md-6 col-md-offset-3 container-fluid col-search center-heading">  
                                 <h2> Search for venues </h2>
                                 <FormGroup className="col-md-offset-2">
-                                    <FormControl type="text" placeholder="..." id="navBarSearchForm" onChange={this.searchHandler}/>
+                                    <FormControl type="text" placeholder="" id="navBarSearchForm" onChange={this.searchHandler}/>
                                 </FormGroup>
                             </div>
                             <div>

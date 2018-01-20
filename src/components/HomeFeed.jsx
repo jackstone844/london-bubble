@@ -18,7 +18,7 @@ export default class VenueFeed extends React.Component {
                 </div>
             </div>
         )
-    }
+    } 
 }
 
 VenueFeed.propTypes = {
