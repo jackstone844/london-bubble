@@ -22,8 +22,8 @@ export default class LocationPhoto extends React.Component {
 
     render() {
 
-        const state = this.props.state
-        const stateInstance = this.props.stateInstance;
+        const appState = this.props.state
+        const appStateInstance = this.props.stateInstance;
 
         let paddingStyle = {
             paddingTop: '0px',
@@ -32,7 +32,7 @@ export default class LocationPhoto extends React.Component {
 
         return (
             <div style={paddingStyle}>
-                <Image key={2} src={stateInstance.image} onClick={this.routeToVenues} responsive rounded />
+                <Image key={2} src={appStateInstance.image} onClick={this.routeToVenues} responsive rounded />
             </div>
         )
     }

@@ -9,7 +9,7 @@ export default class Icons extends React.Component {
         /** 
          * A reference to a single venue using this component
          */
-        const stateInstance = this.props.stateInstance;
+        const appStateInstance = this.props.stateInstance;
 
         /**
          * Inline style giving padding to the components 
@@ -39,7 +39,7 @@ export default class Icons extends React.Component {
         const iconIdentifier = () => {
             let icons = ['website','pinterest','facebook','instagram','twitter']
             icons.map(function(icon){
-                if (stateInstance[icon]) iconArray.push(stateInstance[icon])
+                if (appStateInstance[icon]) iconArray.push(appStateInstance[icon])
             })
         }
         iconIdentifier();
@@ -56,7 +56,7 @@ export default class Icons extends React.Component {
                 </div>
 
                 <div className='col' style={categoryList}>
-                    <p> {stateInstance.tags ? convertTags(stateInstance.tags) : ''} </p>
+                    <p> {appStateInstance.tags ? convertTags(appStateInstance.tags) : ''} </p>
                 </div>
 
                 {/*<div className='col'>
@@ -68,15 +68,15 @@ export default class Icons extends React.Component {
                 </div>*/}
  
                 <div className='col'>
-                    <p> {stateInstance.location} </p>
+                    <p> {appStateInstance.location} </p>
                 </div>
 
                 <div className='col'>
-                    <p> {stateInstance.contact ? stateInstance.contact : '' } </p>
+                    <p> {appStateInstance.contact ? appStateInstance.contact : '' } </p>
                 </div>
 
                 <div className='col'>
-                    <span> {stateInstance.dateAdded ? stateInstance.dateAdded : '2018-01-01' } </span>
+                    <span> {appStateInstance.dateAdded ? appStateInstance.dateAdded : '2018-01-01' } </span>
                 </div>
 
             </div>

@@ -44,12 +44,12 @@ export default class LocationFeedVenues extends React.Component {
                 return <VenueCard key={index} stateInstance={venue} />
             }
         })
-    }  
+    }
 
     render() { 
         // Define in render so as to update each time
         // the component is re-rendered function is called
-        const state = this.props.location.state;
+        const appState = this.props.location.state;
         const venues = this.props.location.state.state.HomeFeed.venues;
         const venuesInstance = this.props.location.state.stateInstance;
         return (

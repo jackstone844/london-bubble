@@ -206,8 +206,8 @@ export class Home extends React.Component {
                     :
                         <div>
                             <div className="col col-md-6 col-md-offset-3 container-fluid col-search center-heading">  
-                                <h2> Search for venues </h2>
-                                <FormGroup className="col-md-offset-2">
+                                <h2> Search our venues </h2>
+                                <FormGroup className="col-xs-offset-2">
                                     <FormControl type="text" placeholder="" id="navBarSearchForm" onChange={this.searchHandler}/>
                                 </FormGroup>
                             </div>

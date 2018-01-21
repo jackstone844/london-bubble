@@ -12,26 +12,24 @@ export default class Photo extends React.Component {
 
     render() {
 
-        const stateInstance = this.props.stateInstance;
+        const appStateInstance = this.props.stateInstance;
 
         let paddingStyle = {
             paddingTop: '10px',
             paddingBottom: '10px'
         };
 
-        return ( 
-            <div style={paddingStyle}>
+        return (
 
+            <div style={paddingStyle}>
                 <Img
                     src={[
-                        stateInstance.image,
+                        appStateInstance.image,
                     ]}
                     loader={<LoadingImage />}
                     className='img-responsive img-rounded'
                 />
-  
                 {/*<Image key={2} src={stateInstance.image} onLoad={this.imageLoader} responsive rounded />*/}
-
             </div>
         )
     }

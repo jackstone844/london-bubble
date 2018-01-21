@@ -3,7 +3,7 @@ import { NavLink, Route } from "react-router-dom";
 import img from '../../public/images/logo-new.png';
 import Home from '../containers/HomeFeed.jsx';
 import Locations from '../containers/LocationFeed.jsx';
-import LocationFeedVenues from '../components/LocationFeedVenues.jsx';
+import LocationFeedVenues from '../components/LocationsVenues.jsx';
 import { 
     Navbar, 
     Nav, 

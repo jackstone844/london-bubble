@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getLocations } from '../actions/LocationFeedActions.js';
 import { getVenue } from '../actions/HomeFeedActions.js';
 import Loading from '../components/LoadingSpinner.jsx';
-import LocationFeed from '../components/LocationFeed.jsx';
+import LocationFeed from '../components/Locations.jsx';
 import PropTypes from 'prop-types';
 
 export class Locations extends React.Component {
@@ -63,12 +63,12 @@ export class Locations extends React.Component {
         // Define in render so as to update each time
         // the component is re-rendered function is called
 
-        const state = this.props.state
+        const appState = this.props.state
         const locations = this.props.state.LocationFeed.locations
 
         return (
             <div className="row">
-                { state.LocationFeed.isFetching === true || state.HomeFeed.isFetching === true ?
+                { appState.LocationFeed.isFetching === true || appState.HomeFeed.isFetching === true ?
                     <div className="loading-container">
                         <Loading /> 
                     </div>

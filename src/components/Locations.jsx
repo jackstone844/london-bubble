@@ -1,5 +1,5 @@
 import React from 'react';
-import LocationPhoto from './LocationFeedImage.jsx';
+import LocationPhoto from './LocationsImage.jsx';
 import PropTypes from 'prop-types';
 
 export default class LocationFeed extends React.Component {
