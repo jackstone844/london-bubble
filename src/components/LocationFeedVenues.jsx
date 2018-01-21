@@ -1,15 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getVenue } from '../actions/HomeFeedActions.js';
-import Loading from '../components/Loading.jsx';
-import VenueFeed from '../components/HomeFeed.jsx';
+import Loading from '../components/LoadingSpinner.jsx';
+import VenueCard from '../components/VenueCard.jsx';
 
 export default class LocationFeedVenues extends React.Component {
     constructor(props){
         super(props);
-
     }
-
+ 
     /**
      * Creates an array of venue objects and 
      * calls a callback with the new array as 
@@ -41,7 +41,7 @@ export default class LocationFeedVenues extends React.Component {
     venueInstance = function (venueArray, filterObj) {
         return venueArray.map(function(venue, index){
             if (venue.category == filterObj.category) {
-                return <VenueFeed key={index} stateInstance={venue} />
+                return <VenueCard key={index} stateInstance={venue} />
             }
         })
     }  
@@ -61,4 +61,3 @@ export default class LocationFeedVenues extends React.Component {
         );
     }
 }
-

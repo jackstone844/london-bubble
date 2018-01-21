@@ -1,10 +1,10 @@
 import React from 'react';
-import Icons from './CardInfo.jsx';
-import Header from './CardHeader.jsx';
-import Photo from './CardImage.jsx';
+import Icons from './VenueCardInfo.jsx';
+import Header from './VenueCardHeader.jsx';
+import Photo from './VenueCardImage.jsx';
 import PropTypes from 'prop-types';
 
-export default class VenueFeed extends React.Component {
+export default class VenueCard extends React.Component {
     render() {
  
         const stateInstance = this.props.stateInstance;
@@ -21,7 +21,7 @@ export default class VenueFeed extends React.Component {
     } 
 }
 
-VenueFeed.propTypes = {
+VenueCard.propTypes = {
     stateInstance: PropTypes.object.isRequired
 };
 

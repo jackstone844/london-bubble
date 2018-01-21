@@ -3,13 +3,6 @@ import PropTypes from 'prop-types';
 const FontAwesome = require('react-fontawesome');
 const { SocialIcon, SocialIcons } = require('react-social-icons');
 
-/**
- * This component is a 'dumb' component. It is passed a single venue from it's parent as a prop, and it 
- * returns:
- *      - Five icons using hrefs 
- *      - The date that the venue was added to the platform 
- */
-
 export default class Icons extends React.Component {
 
     render() {
@@ -43,7 +36,6 @@ export default class Icons extends React.Component {
          * component)
          */
         let iconArray = [];
-
         const iconIdentifier = () => {
             let icons = ['website','pinterest','facebook','instagram','twitter']
             icons.map(function(icon){
@@ -52,23 +44,39 @@ export default class Icons extends React.Component {
         }
         iconIdentifier();
 
+        const convertTags = (array) => {
+            let tags = array.toString().split(',').join(' | ')
+            return tags;
+        }
+
         return (
             <div style={paddingStyle}>
                 <div className="social-icons-container">
                     <SocialIcons className="social-icons-container" urls={iconArray} color='black' style={iconStyle}/>
                 </div>
+
                 <div className='col' style={categoryList}>
-                    <p> Brewery | Canal | Pizza | Outdoor Seating </p>
+                    <p> {stateInstance.tags ? convertTags(stateInstance.tags) : ''} </p>
                 </div>
-                <div className='col'>
+
+                {/*<div className='col'>
                     <p><FontAwesome
                         className='icon-location-arrow icon-1x'
                         name='location-icon'
                         tag='i'
                     /> {stateInstance.location}</p>
-                </div>
+                </div>*/}
+ 
                 <div className='col'>
-                    <span> 2017-12-12 </span>
+                    <p> {stateInstance.location} </p>
+                </div>
+
+                <div className='col'>
+                    <p> {stateInstance.contact ? stateInstance.contact : '' } </p>
+                </div>
+
+                <div className='col'>
+                    <span> {stateInstance.dateAdded ? stateInstance.dateAdded : '2018-01-01' } </span>
                 </div>
 
             </div>

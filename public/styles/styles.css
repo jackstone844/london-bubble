@@ -161,3 +161,10 @@ body {
     filter: brightness(1);
   }
 }
+
+
+/* Forcing css classes to override bootstrap default - can't use !important inline in jsx if the overriding class uses 
+!important */
+.force-background-white {
+  background-color: white !important;
+}

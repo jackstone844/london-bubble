@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getVenue } from '../actions/HomeFeedActions.js';
-import Loading from '../components/Loading.jsx';
-import VenueFeed from '../components/HomeFeed.jsx';
-import SearchBar from '../components/SearchBar.jsx';
+import Loading from '../components/LoadingSpinner.jsx';
+import VenueCard from '../components/VenueCard.jsx';
 import { 
     FormGroup,
     FormControl,
@@ -106,18 +105,18 @@ export class Home extends React.Component {
     }
 
     /**
-     * Return 'n' number of VenueFeed components
+     * Return 'n' number of VenueCard components
      * to calling function. Passes each venue 
      * object as the components state prop and an
      * index as the components key prop.
      *
      * @param {Object[]} - Array of venue objected
-     * @returns - 'n' number of VenueFeed components
+     * @returns - 'n' number of VenueCard components
      *
     */
     venueInstance = function (venueArray) {
         return venueArray.map(function(venue, index){
-                return <VenueFeed key={index} stateInstance={venue} />
+                return <VenueCard key={index} stateInstance={venue} />
         })
     }
 

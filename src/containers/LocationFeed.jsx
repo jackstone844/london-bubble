@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getLocations } from '../actions/LocationFeedActions.js';
 import { getVenue } from '../actions/HomeFeedActions.js';
-import Loading from '../components/Loading.jsx';
+import Loading from '../components/LoadingSpinner.jsx';
 import LocationFeed from '../components/LocationFeed.jsx';
 import PropTypes from 'prop-types';
 
