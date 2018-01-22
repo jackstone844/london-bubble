@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'react-bootstrap';
+import LoadingImage from './LoadingImage';
+import Img from 'react-image';
 
 
 export default class LocationPhoto extends React.Component {
@@ -19,7 +21,7 @@ export default class LocationPhoto extends React.Component {
             }
         })
     }; 
-
+ 
     render() {
 
         const appState = this.props.state
@@ -32,7 +34,15 @@ export default class LocationPhoto extends React.Component {
 
         return (
             <div style={paddingStyle}>
-                <Image key={2} src={appStateInstance.image} onClick={this.routeToVenues} responsive rounded />
+                <Img
+                    src={[
+                        appStateInstance.image,
+                    ]}
+                    loader={<LoadingImage />}
+                    onClick={this.routeToVenues}
+                    className='img-responsive img-rounded'
+                />
+                {/*<Image key={2} src={appStateInstance.image} onClick={this.routeToVenues} responsive rounded />*/}
             </div>
         )
     }
