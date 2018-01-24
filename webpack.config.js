@@ -1,6 +1,12 @@
+/**
+ * This is the common webpack config that will be used to compile code for development and production
+ * environments
+ */
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // Set the paths to our files
 const paths = {
@@ -17,6 +23,9 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     inject: 'body'
 });
 
+// Config to clean the dist/ folder with each build 
+const CleanWebpackPluginConfig = new CleanWebpackPlugin(['dist']);
+
 // Config for the CSS plug in
 // Any CSS required in index.js will be compiled
 // in the bundle
@@ -30,12 +39,12 @@ module.exports = {
     // WebPack JS output
     output: {
         path: paths.DIST,
-        filename: 'index_bundle.js'
+        filename: '[name].bundle.js'
     },
 
     // Loader rules for processing the different
     // files required in index.js
-    module: {    
+    module: {
         rules: [
             { test: /\.js$/, use: [ 'babel-loader' ], exclude: /node_modules/ },
             { test: /\.jsx$/, use: [ 'babel-loader' ], exclude: /node_modules/ },
@@ -47,6 +56,7 @@ module.exports = {
     
     // Call both plugin configs
     plugins: [
+        CleanWebpackPluginConfig,
         HtmlWebpackPluginConfig,
         ExtractTextPluginConfig
     ],
