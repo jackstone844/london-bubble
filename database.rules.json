@@ -1,0 +1,7 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth.uid === 'server-admin-permission-JCHSLJF'"
+    //".write": true
+  }
+}
