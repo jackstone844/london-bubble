@@ -1,6 +1,7 @@
 /**
- * This is the production environment webpack config 
- * It uses webpack-merge to merge the common config with some minification
+ * This is Webpack config that will only be introduced to the common 
+ * Webpack config during a prod build. It merges the prod specific Webpack 
+ * config with the common Webpack config.
  */
 
 const merge = require('webpack-merge');

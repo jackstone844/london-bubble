@@ -1,3 +1,8 @@
+/**
+ * The apps root component. Acts as the entry point of the website, which is rendered 
+ * into div container with an id of root in index.html
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -26,12 +31,21 @@ import '../public/styles/styles.css';
 import './libs/bootstrap-3.3.6/dist/css/bootstrap.css';
 import './libs/font-awesome/css/font-awesome.min.css';
 
-// Configure React store 
+/**
+ * A reference the redux store that is passed into
+ * the react-redux Provider as a store prop.
+ */
 const store = configureStore();
 
-// Create a new instance of browserHistory
+/**
+ * A reference to create a new browser history that 
+ * is passed into the Router as a history prop.
+ */
 const newHistory = createBrowserHistory();
 
+/**
+ * The root of the app.
+ */
 const main = (
     <Provider store={store}>
         <Router history={newHistory}>

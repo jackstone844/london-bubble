@@ -1,6 +1,7 @@
 /**
- * This is the development environment webpack config 
- * It uses webpack-merge to merge the common config with some additional development config
+ * This is Webpack config that will only be introduced to the common 
+ * Webpack config during a dev build. It merges the dev specific Webpack 
+ * config with the common Webpack config.
  */
 
 const merge = require('webpack-merge');

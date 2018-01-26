@@ -17,13 +17,13 @@ export class Home extends React.Component {
      * so it can be access anywhere in the component
      * except in the constructor. 
      * 
-     * If I want to access this.props in the constructor
-     * then I must pass props to the constructor 
+     * To access this.props in the constructor
+     * one must pass props to the constructor 
      * and call super to give us access to the parent 
      * constructor. 
      * 
-     * If I want to use 'this' in the constrcutor, then
-     * I must call super().
+     * If one want to use 'this' in the constrcutor, then
+     * super() must be called
      * 
      * @param {Object} props 
      */
@@ -249,10 +249,10 @@ const mapStateToProps = (state) => {
  * @return {Object} - Redux dispatch object
  * @return {Object} - onGetVenue function
 */
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
     return{
         dispatch,
-        onGetVenue: () => dispatch(getVenue())
+        onGetVenue: () => { dispatch(getVenue()) }
     };
 }
 

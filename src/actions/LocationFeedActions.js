@@ -1,3 +1,11 @@
+/**
+ * Relevant action types are imported from the constants/ActionTypes.js directory
+ * This module creates three standard action creators that will be dispatched 
+ * by the store in a Thunk action creator as an async operation.
+ * Objective of Thunk action creator is to fetch the locations data from 
+ * FireBase database and update the store / state.
+ */ 
+
 import database from '../firebase.config.js';
 import {
     GET_LOCATIONS_REQUESTED,
@@ -6,13 +14,11 @@ import {
 } from '../constants/ActionTypes.js';
 
 /*
-Locations Action Creators 
+Locations Standard Action Creators 
 */
 
 /**
- * Action to be dispatched when requesting 
- * locations from FireBase
- * 
+ * Action to be dispatched when requesting locations from FireBase
  * @return {Object}
  */
  function getLocationsRequestAction() {
@@ -24,9 +30,7 @@ Locations Action Creators
  }
 
 /**
- * Action to be dispatched when requesting 
- * locations from FireBase is rejected
- *
+ * Action to be dispatched when the request for locations from FireBase is rejected
  * @return {Object}
  */
  function getLocationsRejectedAction(error) {
@@ -38,9 +42,8 @@ Locations Action Creators
  }
 
 /**
- * Action to be dispatched when requesting 
- * locations from FireBase is fulfilled
- * 
+ * Action to be dispatched when the request for locations from FireBase is resolved/fullfilled
+ * @param {object} locations - locations obj is returned in the Thunk before this action is dispatched
  * @return {Object}
  */
  function getLocationsFulfilledAction(locations) {
@@ -52,21 +55,13 @@ Locations Action Creators
     } 
  }
 
- /**
- * Function to dispatch action creators 
- * 
+/**
+ * LocationFeed Async Action Creator (Thunk)
  * @return {Object}
- */
-
- /* 
- By calling dispatch(action), the redux store will pass 
- the current state tree and the action object that was
- dispatched to the root reducer, in this case, the root 
- reducer only has the getReducer function
  */
  
  export function getLocations() {
-     return dispatch => {
+     return function (dispatch) {
 
         dispatch(getLocationsRequestAction());
 
