@@ -2,6 +2,6 @@ src/firebase.config.js
 node_modules
 dist/
 .firebaserc
-.database.rules.json
-.firebase.json
-.storage.rules
+database.rules.json
+firebase.json
+storage.rules
