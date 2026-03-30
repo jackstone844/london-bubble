@@ -4,6 +4,7 @@ import img from '../../public/images/logo-new.png';
 import Home from '../containers/HomeFeed.jsx';
 import Locations from '../containers/LocationFeed.jsx';
 import LocationFeedVenues from '../components/LocationsVenues.jsx';
+import CheckoutForm from '../containers/CheckoutForm.jsx';
 import { 
     Navbar, 
     Nav, 
@@ -38,13 +39,17 @@ export default class Navigation extends React.Component {
                         <NavItem href="/locations">
                             <NavLink activeClassName='active' to='/locations'>Locations</NavLink>
                         </NavItem>
+                        <NavItem href="/checkout">
+                            <NavLink activeClassName='active' to='/checkout'>Checkout</NavLink>
+                        </NavItem>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>,
 
             <Route key={2} exact path="/" component={Home} store />,
             <Route key={3} exact path="/locations" component={Locations} store />,
-            <Route key={4} exact path="/locations/venues" component={LocationFeedVenues} />
+            <Route key={4} exact path="/locations/venues" component={LocationFeedVenues} />,
+            <Route key={5} exact path="/checkout" component={CheckoutForm} />
             
         ];
     }
